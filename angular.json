@@ -46,7 +46,6 @@
             "main": "apps/angular-learning/src/main.ts",
             "polyfills": "apps/angular-learning/src/polyfills.ts",
             "tsConfig": "apps/angular-learning/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/angular-learning/src/favicon.ico",
               "apps/angular-learning/src/assets"
@@ -55,7 +54,13 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "apps/angular-learning/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -115,7 +120,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/angular-learning"],
+          "outputs": [
+            "coverage/apps/angular-learning"
+          ],
           "options": {
             "jestConfig": "apps/angular-learning/jest.config.js",
             "passWithNoTests": true
@@ -144,7 +151,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/angular-learning-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/angular-learning-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
