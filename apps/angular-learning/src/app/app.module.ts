@@ -11,6 +11,10 @@ import { ChildAComponent } from "./mediator/mediator-parent/child-a/child-a.comp
 import { ChildBComponent } from "./mediator/mediator-parent/child-b/child-b.component";
 import { SecondComponent } from "./mediator/service-mediator/second/second.component";
 import { FirstComponent } from "./mediator/service-mediator/first/first.component";
+import { StoreModule } from "@ngrx/store";
+import { CounterModule } from "./rtk/counter/counter.module";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "../environments/environment";
 
 @Injectable({ providedIn: "root" })
 @NgModule({
@@ -23,7 +27,15 @@ import { FirstComponent } from "./mediator/service-mediator/first/first.componen
     FirstComponent,
     SecondComponent,
   ],
-  imports: [BrowserModule, FormsModule, RoutingModule, RegistrationModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RoutingModule,
+    RegistrationModule,
+    StoreModule.forRoot({}, {}),
+    CounterModule,
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
