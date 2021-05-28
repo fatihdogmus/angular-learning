@@ -42,7 +42,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/angular-learning",
-            "index": "apps/angular-learning/src/index.html",
+            "index": "index.html",
             "main": "apps/angular-learning/src/main.ts",
             "polyfills": "apps/angular-learning/src/polyfills.ts",
             "tsConfig": "apps/angular-learning/tsconfig.app.json",

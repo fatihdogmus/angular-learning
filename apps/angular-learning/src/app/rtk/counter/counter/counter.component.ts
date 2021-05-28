@@ -5,6 +5,7 @@ import { added, counterSelector, CounterState, decremented, incremented } from "
 @Component({
   selector: "counter",
   templateUrl: "./counter.component.html",
+  styleUrls: ["counter.component.scss"],
 })
 export class CounterComponent implements OnInit {
   count = 0;
