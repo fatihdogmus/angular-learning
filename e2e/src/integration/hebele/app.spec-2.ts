@@ -1,4 +1,4 @@
-import { getGreeting } from '../support/app.po';
+import { getGreeting } from '../../support/app.po';
 
 describe('angular-learning', () => {
   beforeEach(() => cy.visit('/'));
