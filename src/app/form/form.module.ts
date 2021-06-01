@@ -7,6 +7,13 @@ import { ValidationComponent } from './validation/validation.component';
 import { ForbiddenNameValidatorDirective } from "./validation/forbidden-name-validator.directive";
 import { YupComponent } from './validation/yup/yup.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { NgneatReactiveComponent } from './ngneat-reactive/ngneat-reactive.component';
+import { MatInputModule } from "@angular/material/input";
+import { ErrorTailorModule } from "@ngneat/error-tailor";
+import { MatSelectModule } from "@angular/material/select";
+import { MatButtonModule } from "@angular/material/button";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatDividerModule } from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -14,19 +21,22 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     FormReactiveComponent,
     ValidationComponent,
     ForbiddenNameValidatorDirective,
-    YupComponent
+    YupComponent,
+    NgneatReactiveComponent,
   ],
-  exports: [
-    TemplateComponent,
-    FormReactiveComponent,
-    ValidationComponent,
-    YupComponent
-  ],
+
+  exports: [TemplateComponent, FormReactiveComponent, ValidationComponent, YupComponent, NgneatReactiveComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDatepickerModule
-  ]
+    MatDatepickerModule,
+    MatInputModule,
+    ErrorTailorModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatDividerModule,
+  ],
 })
-export class FormModule { }
+export class FormModule {}

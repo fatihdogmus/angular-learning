@@ -16,6 +16,8 @@ import { CounterModule } from "./rtk/counter/counter.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import { FormModule } from "./form/form.module";
+import { ErrorTailorModule } from "@ngneat/error-tailor";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @Injectable({ providedIn: "root" })
 @NgModule({
@@ -36,7 +38,18 @@ import { FormModule } from "./form/form.module";
     StoreModule.forRoot({}, {}),
     CounterModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    FormModule
+    FormModule,
+    ErrorTailorModule.forRoot({
+      errors: {
+        useValue: {
+          required: "Bu alan gerekli",
+          minlength: ({ requiredLength, actualLength }) =>
+            `Expect ${requiredLength} but got ${actualLength}`,
+          invalidAddress: error => `Address isn't valid`
+        }
+      }
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

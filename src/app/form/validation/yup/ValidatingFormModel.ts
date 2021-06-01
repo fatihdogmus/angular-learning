@@ -11,17 +11,20 @@ export abstract class ValidatingFormModel {
     } catch (error: unknown) {
       this.populateErrors(error);
     }
+    console.log(this.errors);
     return this.errors;
   }
 
   private populateErrors(error: unknown): void {
     const validationErrors = (error as ValidationError).inner;
     for (const validationError of validationErrors) {
-      if (validationError.path) {
+      if (validationError.path && !this.errors.has(validationError.path)) {
         this.errors.set(validationError.path, validationError.message);
       }
     }
   }
+
+  protected abstract get scheme(): AnyObjectSchema;
 
   get valid(): boolean {
     return this.errors.size == 0;
@@ -30,6 +33,4 @@ export abstract class ValidatingFormModel {
   get invalid(): boolean {
     return !this.valid;
   }
-
-  protected abstract get scheme(): AnyObjectSchema;
 }

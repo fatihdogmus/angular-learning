@@ -1,0 +1,60 @@
+<form (ngSubmit)="submitted()" errorTailor [formGroup]="model">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput [controlErrorAnchor]="usernameError" name="username" type="text" formControlName="username"
+             placeholder="Username">
+      <mat-error>
+        <ng-template controlErrorAnchor #usernameError="controlErrorAnchor"></ng-template>
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [controlErrorAnchor]="passwordError"
+             name="password" type="password" formControlName="password" placeholder="password">
+      <mat-error>
+        <ng-template controlErrorAnchor #passwordError="controlErrorAnchor"></ng-template>
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender" class="form-control" [controlErrorAnchor]="genderError">
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+      </mat-select>
+      <mat-error>
+        <ng-template controlErrorAnchor #genderError="controlErrorAnchor"></ng-template>
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <mat-label>Birth Date</mat-label>
+      <input matInput [matDatepicker]="birthDate" [controlErrorAnchor]="birthDateError"
+             name="birthDate" type="text" formControlName="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+      <mat-datepicker #birthDate></mat-datepicker>
+      <mat-error>
+        <ng-template controlErrorAnchor #birthDateError="controlErrorAnchor"></ng-template>
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input matInput [controlErrorAnchor]="ageError" name="age" type="number" formControlName="age" placeholder="0">
+      <mat-error>
+        <ng-template controlErrorAnchor #ageError="controlErrorAnchor"></ng-template>
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <div>
+      <button mat-button type="submit">Submit</button>
+    </div>
+  </div>
+</form>

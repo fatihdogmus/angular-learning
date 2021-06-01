@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { AnyObjectSchema, date, number, object, string } from "yup";
 import { ValidatingFormModel } from "./validatingFormModel";
+import { NgForm } from "@angular/forms";
+import { debounceTime } from "rxjs/operators";
 
 class User extends ValidatingFormModel {
   username: string;
@@ -17,28 +19,23 @@ class User extends ValidatingFormModel {
       password: string().required(),
       gender: string().required(),
       birthDate: date().required(),
-      age: number().required()
+      age: number().required(),
     });
   }
-
 }
-
 
 @Component({
   selector: "yup",
-  templateUrl: "./yup.component.html"
+  templateUrl: "./yup.component.html",
 })
-export class YupComponent implements OnInit {
-
+export class YupComponent {
   user: User = new User();
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  @ViewChild("form") form: NgForm;
 
   submitted() {
+    const onChangeSubscription = this.form.valueChanges
+      ?.subscribe(() => this.user.validate());
     console.log(this.user);
     this.user.validate();
     if (this.user.valid) {
