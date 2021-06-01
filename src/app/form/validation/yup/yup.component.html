@@ -1,0 +1,27 @@
+<form #form="ngForm" (ngSubmit)="submitted()">
+  <div>
+    <input name="username" #username="ngModel" type="text" [(ngModel)]="user.username" (blur)="user.validate()">
+    <span *ngIf="user.errors.get('username') && (username.dirty || form.submitted)">{{user.errors.get('username')}}</span>
+  </div>
+  <div>
+    <input name="password" #password="ngModel" type="password" [(ngModel)]="user.password" (blur)="user.validate()">
+    <span *ngIf="user.errors.get('password') && password.dirty">{{user.errors.get('password')}}</span>
+  </div>
+  <div>
+    <select name="gender" [(ngModel)]="user.gender" (blur)="user.validate()">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <span *ngIf="user.errors.get('gender')">{{user.errors.get('gender')}}</span>
+  </div>
+  <div>
+    <input name="birtDate" type="datetime-local" [(ngModel)]="user.birthDate" (blur)="user.validate()">
+    <span *ngIf="user.errors.get('birtDate')">{{user.errors.get('birtDate')}}</span>
+  </div>
+  <div>
+    <input name="age" type="number" [(ngModel)]="user.age" (blur)="user.validate()">
+  </div>
+  <div>
+    <button [disabled]="this.user.invalid" type="submit">Submit</button>
+  </div>
+</form>

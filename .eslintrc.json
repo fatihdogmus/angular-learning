@@ -4,8 +4,7 @@
     "**/*"
   ],
   "plugins": [
-    "@nrwl/nx",
-    "ngrx"
+    "@nrwl/nx"
   ],
   "overrides": [
     {

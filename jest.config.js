@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/angular-learning'],
+  projects: ['<rootDir>/src'],
 };

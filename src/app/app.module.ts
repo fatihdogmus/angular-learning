@@ -15,6 +15,7 @@ import { StoreModule } from "@ngrx/store";
 import { CounterModule } from "./rtk/counter/counter.module";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
+import { FormModule } from "./form/form.module";
 
 @Injectable({ providedIn: "root" })
 @NgModule({
@@ -35,6 +36,7 @@ import { environment } from "../environments/environment";
     StoreModule.forRoot({}, {}),
     CounterModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    FormModule
   ],
   providers: [],
   bootstrap: [AppComponent],
