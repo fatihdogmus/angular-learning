@@ -10,6 +10,7 @@ import { Component } from "@angular/core";
 export class TestComponent {
   textContent: string = "Original text content";
 
+
   onClick() {
     this.textContent = "New text content!";
   }
