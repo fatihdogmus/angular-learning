@@ -1,14 +1,16 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-test",
-  templateUrl: "test.component.html",
+  selector: "test",
+  template: `
+    <span>{{textContent}}</span>
+    <button (click)="onClick()">Change text</button>
+  `,
 })
 export class TestComponent {
-  constructor(private router: Router) {}
+  textContent: string = "Original text content";
 
-  onClik() {
-    this.router.navigate(["/product", 3], { queryParams: { name: "fatih" } });
+  onClick() {
+    this.textContent = "New text content!";
   }
 }

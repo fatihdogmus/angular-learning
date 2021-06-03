@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": "apps/angular-learning-e2e/tsconfig.*?.json"
+        "project": "e2e/tsconfig.*?.json"
       },
       "rules": {}
     },

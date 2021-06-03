@@ -18,6 +18,7 @@ import { environment } from "../environments/environment";
 import { FormModule } from "./form/form.module";
 import { ErrorTailorModule } from "@ngneat/error-tailor";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpModule } from "./http/http.module";
 
 @Injectable({ providedIn: "root" })
 @NgModule({
@@ -43,13 +44,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
       errors: {
         useValue: {
           required: "Bu alan gerekli",
-          minlength: ({ requiredLength, actualLength }) =>
-            `Expect ${requiredLength} but got ${actualLength}`,
-          invalidAddress: error => `Address isn't valid`
-        }
-      }
+          minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
+          invalidAddress: () => `Address isn't valid`,
+        },
+      },
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
