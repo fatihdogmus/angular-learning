@@ -19,6 +19,8 @@ import { FormModule } from "./form/form.module";
 import { ErrorTailorModule } from "@ngneat/error-tailor";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpModule } from "./http/http.module";
+import { NgrxModule } from "./ngrx/ngrx.module";
+import { counterReducer } from "./ngrx/store/slices/counter/counter.reducer";
 
 @Injectable({ providedIn: "root" })
 @NgModule({
@@ -29,30 +31,35 @@ import { HttpModule } from "./http/http.module";
     ChildAComponent,
     ChildBComponent,
     FirstComponent,
-    SecondComponent,
+    SecondComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RoutingModule,
     RegistrationModule,
-    StoreModule.forRoot({}, {}),
-    CounterModule,
+    // CounterModule,
+    StoreModule.forRoot({asda: counterReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     FormModule,
     ErrorTailorModule.forRoot({
       errors: {
         useValue: {
           required: "Bu alan gerekli",
-          minlength: ({ requiredLength, actualLength }) => `Expect ${requiredLength} but got ${actualLength}`,
-          invalidAddress: () => `Address isn't valid`,
-        },
-      },
+          minlength: ({
+                        requiredLength,
+                        actualLength
+                      }: { requiredLength: number, actualLength: number }) => `Expect ${requiredLength} but got ${actualLength}`,
+          invalidAddress: () => `Address isn't valid`
+        }
+      }
     }),
     BrowserAnimationsModule,
     HttpModule,
+    NgrxModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

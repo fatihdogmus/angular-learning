@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSlice, createStore, PayloadAction } from "@reduxjs/toolkit";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface CounterState {
