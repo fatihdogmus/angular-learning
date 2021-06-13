@@ -39,7 +39,7 @@ import { environment } from "../environments/environment";
     RoutingModule,
     RegistrationModule,
     // CounterModule,
-    // StoreModule.forRoot({counterReducer: counterReducer}),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     FormModule,
     ErrorTailorModule.forRoot({

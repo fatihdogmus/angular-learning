@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'angular-learning',
+  displayName: 'angular-test',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../coverage/apps/angular-learning',
+  coverageDirectory: '../../coverage/apps/angular-test',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
